@@ -12,7 +12,7 @@ public class MainClient {
 
     public static void main(String[] args) {
         try {
-            new Client("127.0.0.1", 6969);
+            Client client = new Client("localhost", 80);
         } catch (IOException var2) {
             System.out.println("io");
         }

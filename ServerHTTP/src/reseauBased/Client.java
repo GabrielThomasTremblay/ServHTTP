@@ -16,25 +16,27 @@ public class Client {
     private Socket server = null;
     private DataOutputStream out;
     private DataInputStream in;
+    private DataInputStream servIn;
 
     public Client(String address, int port) throws IOException {
         this.server = new Socket(address, port);
         System.out.println("Connecter");
         this.in = new DataInputStream(System.in);
         this.out = new DataOutputStream(this.server.getOutputStream());
+        this.servIn = new DataInputStream(this.server.getInputStream());
         String line = "";
-        Scanner scanner = new Scanner(this.in);
+        Scanner scanner = new Scanner(System.in);
+
+        scanner.close();
 
         while(!line.equals("fini")) {
-            try {
-                line = scanner.nextLine();
-                this.out.writeUTF(line);
-            } catch (IOException var6) {
-                System.out.println("e");
-            }
+            line = scanner.nextLine();
+            this.out.writeUTF(line);
+            line = servIn.readUTF();
+            System.out.println(line);
         }
 
-        this.in.close();
+        this.servIn.close();
         this.out.close();
     }
 }

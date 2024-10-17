@@ -22,6 +22,7 @@ public class Serveur {
         this.server = new ServerSocket(port);
         this.client = this.server.accept();
         this.in = new DataInputStream(this.client.getInputStream());
+        this.out = new DataOutputStream(this.client.getOutputStream());
         String line = "";
 
         while(!line.equals("Fini")) {

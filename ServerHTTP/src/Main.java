@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            new Serveur(6969);
+            Serveur server = new Serveur(80);
         } catch (IOException var2) {
             IOException e = var2;
             System.out.println(e);
