@@ -18,12 +18,18 @@ public class Serveur {
     private DataInputStream in = null;
     private DataOutputStream out = null;
 
+    private void date() {
+        hello;
+    }
+
     public Serveur(int port) throws IOException {
         this.server = new ServerSocket(port);
         this.client = this.server.accept();
         this.in = new DataInputStream(this.client.getInputStream());
         this.out = new DataOutputStream(this.client.getOutputStream());
         String line = "";
+
+
 
         while(!line.equals("Fini")) {
             try {
@@ -33,6 +39,10 @@ public class Serveur {
 
                 } else if (line.startsWith("GET")) {
                     this.out.writeUTF("Meow :3");
+
+                } else if (line.startsWith("HEAD")) {
+
+                    this.out.writeUTF("200 ok \rDate: ");
 
                 } else {
                     this.out.writeUTF("");
