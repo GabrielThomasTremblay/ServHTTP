@@ -30,6 +30,10 @@ public class Serveur {
                 line = this.in.readUTF();
                 if (line.equals("Cat")) {
                     this.out.writeUTF("Meow :3");
+
+                } else if (line.startsWith("GET")) {
+                    this.out.writeUTF("Meow :3");
+
                 } else {
                     this.out.writeUTF("");
                     System.out.println(line);
